@@ -1,0 +1,7 @@
+{
+  "name": "Sham Bank",
+  "description": "An electronic banking application that supports digital currencies, with a Visa card feature for paper and digital currencies. ",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}

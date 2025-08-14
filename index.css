@@ -1,0 +1,337 @@
+
+/* Chat FAB */
+.chat-fab {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 64px;
+    height: 64px;
+    background-color: var(--tw-color-primary, #5D5CDE);
+    color: white;
+    border-radius: 9999px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out, opacity 0.3s ease-in-out;
+    z-index: 100;
+}
+
+.chat-fab:hover {
+    transform: scale(1.05);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.chat-fab.hidden {
+    opacity: 0;
+    transform: scale(0.8);
+    pointer-events: none;
+}
+
+
+/* Chat Modal */
+.chat-modal {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin: 16px;
+    width: calc(100% - 32px);
+    max-width: 440px;
+    height: 70vh;
+    max-height: 600px;
+    background-color: #f9fafb; /* gray-50 */
+    border-radius: 16px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transform: translateY(100%) translateY(32px);
+    opacity: 0;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+    z-index: 101;
+}
+
+.dark .chat-modal {
+    background-color: #1f2937; /* gray-800 */
+}
+
+.chat-modal.visible {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* Chat Header */
+.chat-header {
+    background: linear-gradient(135deg, #5D5CDE 0%, #8B5CF6 100%);
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+/* Chat Messages */
+.chat-messages {
+    flex-grow: 1;
+    padding: 16px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.chat-message {
+    display: flex;
+    max-width: 85%;
+}
+
+.message-bubble {
+    padding: 10px 16px;
+    border-radius: 18px;
+    word-wrap: break-word;
+}
+
+.user-message {
+    margin-right: auto;
+}
+
+.user-message .message-bubble {
+    background-color: #e5e7eb; /* gray-200 */
+    color: #111827; /* gray-900 */
+    border-bottom-right-radius: 4px;
+}
+
+.dark .user-message .message-bubble {
+    background-color: #4b5563; /* gray-600 */
+    color: #f9fafb; /* gray-50 */
+}
+
+.ai-message {
+    margin-left: auto;
+}
+
+.ai-message .message-bubble {
+    background-color: var(--tw-color-primary, #5D5CDE);
+    color: white;
+    border-bottom-left-radius: 4px;
+}
+
+/* Chat Form */
+.chat-form {
+    display: flex;
+    padding: 16px;
+    border-top: 1px solid #e5e7eb; /* gray-200 */
+    background-color: #f9fafb; /* gray-50 */
+    flex-shrink: 0;
+}
+.dark .chat-form {
+    border-top-color: #374151; /* gray-700 */
+    background-color: #1f2937; /* gray-800 */
+}
+
+#chat-input:disabled {
+    background-color: #e5e7eb; /* gray-200 */
+}
+.dark #chat-input:disabled {
+    background-color: #374151; /* gray-700 */
+}
+
+#chat-send-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Typing Indicator */
+.typing-indicator {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 5px;
+}
+
+.typing-indicator span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.7);
+    display: inline-block;
+    margin: 0 1px;
+    animation: typing-wave 1.4s infinite;
+}
+
+.user-message .typing-indicator span {
+    background-color: rgba(0,0,0,0.4);
+}
+
+.typing-indicator span:nth-of-type(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-indicator span:nth-of-type(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes typing-wave {
+    0%, 60%, 100% {
+        transform: translateY(0);
+    }
+    30% {
+        transform: translateY(-4px);
+    }
+}
+
+/* Bottom Navigation */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #ffffff; /* white */
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+    z-index: 50;
+    border-top: 1px solid #e5e7eb; /* gray-200 */
+}
+
+.dark .bottom-nav {
+    background-color: #1f2937; /* gray-800 */
+    border-top-color: #374151; /* gray-700 */
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    padding: 8px 0;
+    color: #6b7280; /* gray-500 */
+    transition: color 0.2s;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.nav-item:hover {
+    color: #5D5CDE;
+}
+
+.nav-item.active {
+    color: var(--tw-color-primary, #5D5CDE);
+}
+
+.nav-item i {
+    font-size: 1.25rem; /* text-xl */
+    margin-bottom: 2px;
+}
+
+.nav-item span {
+    font-size: 0.75rem; /* text-xs */
+}
+
+/* Crypto Asset List */
+.asset-item {
+    transition: background-color 0.2s ease-in-out;
+}
+.asset-item:hover {
+    background-color: #f9fafb; /* gray-50 */
+}
+.dark .asset-item:hover {
+    background-color: #374151; /* gray-700 */
+}
+
+/* Visa Card Styles */
+.visa-card {
+    border-radius: 1rem; /* rounded-2xl */
+    overflow: hidden;
+    position: relative;
+    aspect-ratio: 1.586; /* Standard credit card aspect ratio */
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.fiat-card {
+    background: linear-gradient(135deg, #4c51bf 0%, #667eea 100%);
+}
+
+.crypto-card-bg {
+     background: linear-gradient(135deg, #1e293b 0%, #4a5568 100%);
+}
+
+.card-chip {
+    width: 48px;
+    height: 38px;
+    background-color: #d4af37;
+    border-radius: 0.25rem;
+    background-image: linear-gradient(45deg, #b89b3c, #f0e68c, #b89b3c);
+}
+
+/* Security Page Styles */
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 28px;
+}
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+input:checked + .slider {
+    background-color: var(--tw-color-primary, #5D5CDE);
+}
+input:checked + .slider:before {
+    transform: translateX(22px);
+}
+
+.session-item {
+    padding: 1rem 0.5rem;
+    border-bottom: 1px solid #e5e7eb; /* gray-200 */
+}
+.dark .session-item {
+    border-bottom-color: #374151; /* gray-700 */
+}
+.session-item:last-child {
+    border-bottom: none;
+}
+
+/* QR Scanner Styles */
+#qr-reader {
+    width: 100%;
+    border-radius: 1rem;
+    overflow: hidden;
+    border: 4px solid rgba(255, 255, 255, 0.2);
+}
+
+#qr-reader video {
+    width: 100% !important;
+    height: auto !important;
+}
+
+#qr-reader__scan_region {
+    border-radius: 0.75rem; /* Make the inner border rounded */
+}

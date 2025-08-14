@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بنك شام - تسجيل الدخول</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="auth.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#5D5CDE',
+                        shamGold: '#D4AF37',
+                    },
+                    fontFamily: {
+                        'arabic': ['Segoe UI', 'Tahoma', 'Arial', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-arabic">
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="text-center mb-8">
+                <div class="inline-block bg-primary p-3 rounded-2xl mb-3">
+                    <i class="fas fa-university text-white text-2xl"></i>
+                </div>
+                <h1 class="text-3xl font-bold text-gray-900 dark:text-white">بنك شام</h1>
+                <p class="text-gray-600 dark:text-gray-300">SHAM Bank</p>
+            </div>
+
+            <!-- Login Form -->
+            <form id="login-form" class="space-y-6">
+                <div>
+                    <label for="login-email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">البريد الإلكتروني أو رقم الهاتف</label>
+                    <input type="email" id="login-email" class="form-input" placeholder="example@email.com" required>
+                </div>
+                <div>
+                    <label for="login-password" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">كلمة المرور</label>
+                    <input type="password" id="login-password" class="form-input" placeholder="********" required>
+                </div>
+                <a href="index.html" class="form-button">تسجيل الدخول</a>
+                <p class="text-center text-sm text-gray-600 dark:text-gray-400">
+                    ليس لديك حساب؟ <button type="button" id="show-register" class="font-semibold text-primary hover:underline">إنشاء حساب</button>
+                </p>
+            </form>
+
+            <!-- Register Form -->
+            <form id="register-form" class="space-y-6 hidden">
+                 <div>
+                    <label for="register-name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">الاسم الكامل</label>
+                    <input type="text" id="register-name" class="form-input" placeholder="عمر أحمد" required>
+                </div>
+                <div>
+                    <label for="register-email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">البريد الإلكتروني</label>
+                    <input type="email" id="register-email" class="form-input" placeholder="example@email.com" required>
+                </div>
+                <div>
+                    <label for="register-password" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">كلمة المرور</label>
+                    <input type="password" id="register-password" class="form-input" placeholder="********" required>
+                </div>
+                <div>
+                    <label for="register-confirm-password" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">تأكيد كلمة المرور</label>
+                    <input type="password" id="register-confirm-password" class="form-input" placeholder="********" required>
+                </div>
+                <a href="index.html" class="form-button">إنشاء حساب</a>
+                <p class="text-center text-sm text-gray-600 dark:text-gray-400">
+                    لديك حساب بالفعل؟ <button type="button" id="show-login" class="font-semibold text-primary hover:underline">تسجيل الدخول</button>
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const loginForm = document.getElementById('login-form');
+        const registerForm = document.getElementById('register-form');
+        const showRegisterBtn = document.getElementById('show-register');
+        const showLoginBtn = document.getElementById('show-login');
+
+        showRegisterBtn.addEventListener('click', () => {
+            loginForm.classList.add('hidden');
+            registerForm.classList.remove('hidden');
+        });
+
+        showLoginBtn.addEventListener('click', () => {
+            registerForm.classList.add('hidden');
+            loginForm.classList.remove('hidden');
+        });
+    </script>
+</body>
+</html>
